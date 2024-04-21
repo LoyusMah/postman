@@ -20,8 +20,8 @@ Content-Type: application/json
 
 #Body of the request, there should be gap between header and body
 {
-   "type": "bad",
-      "id": "sfAlJv"
+      "_id": "6625a35da29608524e197fe1",
+   "type": "bad"
 }
 
 ### delete data

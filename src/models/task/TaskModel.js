@@ -14,7 +14,7 @@ export const getTasks = () => {
 
 // U
 export const updateTask = (id, type) => {
-  return TaskSchema.findByIdAndUpdate(id, { type });
+  return TaskSchema.findByIdAndUpdate(_id, { type });
 };
 
 // D

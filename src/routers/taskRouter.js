@@ -9,7 +9,9 @@ let fakeDb = [];
 
 //get data
 router.get("/", async (req, res) => {
+  //db query to get the data
   const result = await getTasks();
+  console.log(result);
   res.json(result);
 });
 
@@ -33,8 +35,13 @@ router.post("/", async (req, res) => {
 
 //update task
 router.patch("/", async (req, res) => {
-  const { id, type } = req.body;
-  console.log(id, type);
+  const { _id, type } = req.body;
+  console.log(_id, type);
+  // result?._id ? res.json({
+  //   message:"updated"
+
+  // })
+
   const result = await updateTask(id, type);
   res.json({
     messaeg: "Your task has been updated",
