@@ -13,8 +13,11 @@ export const getTasks = () => {
 };
 
 // U
-export const updateTask = (id, type) => {
+export const updateTask = (_id, type) => {
   return TaskSchema.findByIdAndUpdate(_id, { type });
 };
 
 // D
+export const deleteTask = (_id) => {
+  return TaskSchema.findByIdAndDelete(_id);
+};

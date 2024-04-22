@@ -1,6 +1,11 @@
 import express from "express";
 import { idGenerator } from "../utils.js";
-import { insertTask, getTasks, updateTask } from "../models/task/TaskModel.js";
+import {
+  insertTask,
+  getTasks,
+  updateTask,
+  deleteTask,
+} from "../models/task/TaskModel.js";
 const router = express.Router();
 
 let fakeDb = [];
@@ -48,14 +53,21 @@ router.patch("/", async (req, res) => {
   });
 });
 //delete task
-router.delete("/", (req, res) => {
-  const { id } = req.body;
+router.delete("/", async (req, res) => {
+  try {
+    const { _id } = req.body;
 
-  fakeDb = fakeDb.filter((item) => item.id !== id);
-
-  res.json({
-    messaeg: "Your task has been updated",
-  });
+    const result = await deleteTask(_id);
+    result?._id
+      ? res.json({
+          messaeg: "Your task has been updated",
+        })
+      : res.json({
+          messaeg: "unable to delete try later",
+        });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export default router;
